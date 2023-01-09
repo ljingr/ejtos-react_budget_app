@@ -11,19 +11,14 @@ const Currency = () => {
         background: "green"
       };
 
-    const changecurrency = () => {
+    const changecurrency = (e) => {
+        setCurrency(e.target.value)
         dispatch({
             type: 'CHG_CURRENCY',
-            payload: currency
+            payload: e.target.value
         });
 
     }
-
-    const twoCalls = (e) => {
-        setCurrency(e.target.value)
-        changecurrency()
-    }
-
 
     return (
      
@@ -31,7 +26,7 @@ const Currency = () => {
 
             <div >
 
-            <span> Currency ({<select style = {spanStyle} className="currency-select" id="currencyselect" onChange={twoCalls}>
+            <span> Currency ({<select style = {spanStyle} className="currency-select" id="currencyselect" onChange={changecurrency}>
                 <option value ="£" defaultValue name="Pound">£ Pound</option>
                 <option value="$" name="Dollar">$ Dollar</option>
                 <option value="€" name="Euro">€ Euro</option>
